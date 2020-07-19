@@ -1,0 +1,42 @@
+% Mathematics
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+
+% Colours
+\usepackage[usenames,dvipsnames]{xcolor}
+  \definecolor{col1}{HTML}{3A86FF}
+  \definecolor{col2}{HTML}{0BBF7D}
+  \definecolor{col3}{HTML}{FFBE0B}
+  \definecolor{col4}{HTML}{FF006E}
+  \definecolor{col5}{HTML}{733907}
+
+% Fonts
+\usepackage{libertine}
+\usepackage{newtxmath}
+\usepackage{fontspec}
+\setmonofont[Scale=MatchLowercase]{Courier New Bold}
+
+% Formatting
+\usepackage{enumitem}
+\usepackage{marginnote}
+\usepackage[top=2.5cm,bottom=2.5cm,inner=3.5cm,outer=3cm,marginparwidth=1.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\setlength\parindent{0pt}
+
+% Graphics
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+
+% Honestly don't remember
+\usepackage[normalem]{ulem}
+\usepackage[misc]{ifsym}
+
+% Chapter and section formatting
+\titleformat{name=\chapter}[display]{\bfseries\LARGE\itshape\sffamily}{}{0.5ex}{\vspace{1ex}\rule{\textwidth}{1pt}\newline\thechapter.\quad\vspace{1ex}}[\vspace{-0.5ex}\rule{\textwidth}{0.3pt}]
+
+\titleformat{name=\chapter, numberless}[block]{\normalfont\bfseries\LARGE}{}{0em}{}
+
+\titleformat{name=\section, numberless}[display]{\bfseries\sffamily}{}{.5ex}{\thesection~}[\vspace{-0.5ex}%
+\rule{\textwidth}{0.3pt}]

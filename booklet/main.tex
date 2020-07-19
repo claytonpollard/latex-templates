@@ -1,0 +1,132 @@
+\documentclass[11pt,a4paper,twoside]{report}
+
+\input{./include/structure.tex}
+\input{./include/environments.tex}
+
+%\usepackage{showframe}
+
+\begin{document}
+
+\ShowClozetrue
+
+\tableofcontents
+
+\chapter{Using the template}
+
+\section{Compiling}
+
+\begin{important}
+You'll need to use lualatex\marginnote{xelatex will probably work too!} when you're compiling unless you take out the font changes under \textit{include/structure.tex}
+\end{important}
+
+\section{Boxes}
+
+The template has 6 different boxes you can use:
+\begin{itemize}
+  \item Definition
+  \item Example*
+  \item \textit{Solution}*%\marginnote{*Are paired together, but can be used separately.}
+  \item Note
+  \item Important note
+  \item Further exercises
+\end{itemize}
+The definition and example boxes are numbered and can have titled added.
+
+\subsection{Definition box}
+
+\begin{definition}[Title]
+  Definition here
+\end{definition}
+
+\begin{definition}
+  Definition here
+\end{definition}
+
+\subsection{Example and solution boxes}
+
+\begin{example}{Title}
+  Example here
+\end{example}
+
+\begin{example}{}
+  Example here
+\end{example}
+
+%By default the solution box has a height of 4 cm, but it can be changed by including `[height=?cm]' where ? is replaced with a value. e.g.
+
+\begin{example}[height=2.5cm]{Title}
+  Example here
+\end{example}
+
+The solution and example boxes can also be made separely by using `examplebox' and `solutionbox'. The examplebox can also be made with a title and the height of the solutionbox can be set.
+
+\begin{examplebox}{Title}
+  Example here
+\end{examplebox}
+
+\begin{examplebox}
+  Example here
+\end{examplebox}
+
+% When making a solutionbox you must include `\vspace\{1em\}}'. By default it is shifted up 1em to be aligned with the examplebox.
+
+\vspace{1em}
+\begin{solutionbox}
+  Solution here
+\end{solutionbox}
+
+% And again, the height can be modified. By default it is 4 cm.
+
+\vspace{1em}
+\begin{solutionbox}[height=2cm]
+  Solution here
+\end{solutionbox}
+
+\subsection{Note boxes}
+
+\begin{note}
+  Note here
+\end{note}
+
+\subsection{Important note boxes}
+
+\begin{important}
+  Important note here
+\end{important}
+
+\subsection{Further exercises}
+
+\begin{further}
+  Further exercises here
+\end{further}
+
+\section{Writing grid}
+
+\GridOn
+
+% To turn on the writing grid simply make sure that `\GridOn' is included on the page you want the grid.
+
+\begin{note}
+  The solutionbox is transparent so the gridlines will be visible through the box.
+\end{note}
+
+\begin{example}{}
+  Example
+\end{example}
+
+\section{Cloze}\marginnote{Shoutout to Hubert because this code was yoinked out of his booklets}
+
+You can add spaces for students to fill in words and choose to show/hide these words (for printing a teacher copy perhaps?). It will also look at what the cut out words are and make sure that an appropriate amount of space is left.
+
+% To use cloze, simply write `\Close{your word here}'
+
+For example \Cloze{here}
+
+% Ensure that `\ShowClozetrue' is just under \begin{document} to show the words, and removing `\ShowClozefalse' will hide the words.
+
+\section{Margin notes}
+You can also add marginnotes. \marginnote{Like this.}
+
+The notes will alternate sides depending on odd/even pages, the margins will also change by 0.5 cm on the left and right to allow slightly more room for marginnotes. This can be disabled by removing `twoside' from the documentclass.
+
+\end{document}
