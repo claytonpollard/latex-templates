@@ -24,11 +24,14 @@ You'll need to use lualatex\marginnote{xelatex will probably work too!} when you
 The template has 6 different boxes you can use:
 \begin{itemize}
   \item Definition
-  \item Example*
-  \item \textit{Solution}*%\marginnote{*Are paired together, but can be used separately.}
+  \item Example*\marginnote{*Can be made with and without solution space underneath}
   \item Note
   \item Important note
   \item Further exercises
+  \item Learning outcome
+  \item Theorem
+  \item Law
+  \item Result**\marginnote{**Can be made with and without proof space underneath}
 \end{itemize}
 The definition and example boxes are numbered and can have titled added.
 
@@ -58,7 +61,7 @@ The definition and example boxes are numbered and can have titled added.
   Example here
 \end{example}
 
-The solution and example boxes can also be made separely by using `examplebox' and `solutionbox'. The examplebox can also be made with a title and the height of the solutionbox can be set.
+The example box can also be made separely by using `examplebox'. The examplebox can also be made with and without a title.
 
 \begin{examplebox}{Title}
   Example here
@@ -67,20 +70,6 @@ The solution and example boxes can also be made separely by using `examplebox' a
 \begin{examplebox}
   Example here
 \end{examplebox}
-
-% When making a solutionbox you must include `\vspace\{1em\}}'. By default it is shifted up 1em to be aligned with the examplebox.
-
-\vspace{1em}
-\begin{solutionbox}
-  Solution here
-\end{solutionbox}
-
-% And again, the height can be modified. By default it is 4 cm.
-
-\vspace{1em}
-\begin{solutionbox}[height=2cm]
-  Solution here
-\end{solutionbox}
 
 \subsection{Note boxes}
 
@@ -100,6 +89,34 @@ The solution and example boxes can also be made separely by using `examplebox' a
   Further exercises here
 \end{further}
 
+\subsection{Learning outcome}
+
+\begin{outcome}
+  Learning outcome here
+\end{outcome}
+
+\subsection{Theorem}
+
+\begin{theorem}[Pythagoras']
+  $$a^2+b^2=c^2$$
+\end{theorem}
+
+\subsection{Law}
+
+\begin{law}[Distributive]
+  $$a(b+c)=ab+ac$$
+\end{law}
+
+\subsection{Result}
+
+\begin{result}
+  $$(a+b)(a-b)=a^2-b^2$$
+\end{result}
+
+\begin{resultbox}
+  Resultbox with no proof
+\end{resultbox}
+
 \section{Writing grid}
 
 \GridOn
@@ -107,12 +124,14 @@ The solution and example boxes can also be made separely by using `examplebox' a
 % To turn on the writing grid simply make sure that `\GridOn' is included on the page you want the grid.
 
 \begin{note}
-  The solutionbox is transparent so the gridlines will be visible through the box.
+  The solutionbox and proofbox is transparent so the gridlines will be visible through the box.
 \end{note}
 
 \begin{example}{}
   Example
 \end{example}
+
+\GridOn
 
 \section{Cloze}\marginnote{Shoutout to Hubert because this code was yoinked out of his booklets}
 

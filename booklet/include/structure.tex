@@ -10,6 +10,7 @@
   \definecolor{col3}{HTML}{FFBE0B}
   \definecolor{col4}{HTML}{FF006E}
   \definecolor{col5}{HTML}{733907}
+  \definecolor{col6}{HTML}{B340D7}
 
 % Fonts
 \usepackage{libertine}
@@ -18,12 +19,22 @@
 \setmonofont[Scale=MatchLowercase]{Courier New Bold}
 
 % Formatting
+\usepackage{paralist}
 \usepackage{enumitem}
+\setlist[itemize]{itemsep=0pt, topsep=2pt}
 \usepackage{marginnote}
-\usepackage[top=2.5cm,bottom=2.5cm,inner=3.5cm,outer=3cm,marginparwidth=1.5cm]{geometry}
+\renewcommand*{\marginfont}{\footnotesize}
+\usepackage[top=1.5cm,bottom=1.5cm,inner=2.5cm,outer=4cm,marginparwidth=2.5cm]{geometry}
 \usepackage{hyperref}
 \usepackage{titlesec}
 \setlength\parindent{0pt}
+\pagenumbering{gobble}
+\usepackage{multicol}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\raggedbottom
 
 % Graphics
 \usepackage{graphicx}
@@ -38,5 +49,8 @@
 
 \titleformat{name=\chapter, numberless}[block]{\normalfont\bfseries\LARGE}{}{0em}{}
 
-\titleformat{name=\section, numberless}[display]{\bfseries\sffamily}{}{.5ex}{\thesection~}[\vspace{-0.5ex}%
-\rule{\textwidth}{0.3pt}]
+\titleformat{\section}[display]{\Large\sffamily\bfseries}{}{.5ex}{\vspace{-1em}\thesection~}
+
+\titleformat{\subsection}[display]{\sffamily\bfseries}{}{.5ex}{\vspace{-1em}\thesubsection~}
+
+\titleformat{\subsubsection}[display]{\sffamily\bfseries}{}{.5ex}{\vspace{-1em}}
