@@ -1,0 +1,34 @@
+% Boxes
+\usepackage[most]{tcolorbox} % Required for boxes
+	\tcbuselibrary{skins,breakable,xparse}
+\usepackage{varwidth}
+
+\newcounter{definition}
+\resetcounteronoverlays{definition}
+
+\renewtcolorbox[auto counter]{definition}[1][]{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col1!20!white,fonttitle=\bfseries,coltitle=col1!50!black,colframe=col1!50!white,title=Definition~\thedefinition\quad#1\newline,attach title to upper,borderline west={2pt}{0pt}{col1!80!black},left=3mm,phantom={\global\refstepcounter{definition}}}
+
+\newcounter{example}
+\resetcounteronoverlays{example}
+
+\renewtcolorbox[auto counter]{example}[1][]{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col2!20!white,fonttitle=\bfseries,coltitle=col2!50!black,colframe=col2!50!white,title=Example~\theexample\quad#1\newline,attach title to upper,borderline west={2pt}{0pt}{col2!80!black},left=3mm,phantom={\global\refstepcounter{example}}}
+
+\renewtcolorbox{solution}[1][height=4cm]{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,#1,colback=col2!80!white,fonttitle=\bfseries,coltitle=col2!50!black,colframe=col2!50!white,opacityback=.1,title=Solution\newline,attach title to upper,borderline west={2pt}{0pt}{col2!80!black},left=3mm,top=3mm,,borderline north={1pt}{0pt}{col2!80!black},before={\vspace{-7pt}}}
+
+\renewtcolorbox{note}{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col3!20!white,fonttitle=\normalfont\bfseries,coltitle=col3!50!black,colframe=col3!50!white,title=Note~,attach title to upper,borderline west={2pt}{0pt}{col3!80!black},left=3mm,fontupper=\itshape}
+
+\newtcolorbox{important}{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col4!20!white,fonttitle=\bfseries,coltitle=col4!50!black,colframe=col4!50!white,title=Important Note\newline,attach title to upper,borderline west={2pt}{0pt}{col4!80!black},left=3mm}
+
+\newtcolorbox{further}{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col5!20!white,fonttitle=\bfseries,coltitle=col5!50!black,colframe=col5!50!white,title=Further Exercises\newline,attach title to upper,borderline west={2pt}{0pt}{col5!80!black},left=3mm}
+
+\newtcolorbox{outcome}{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col6!20!white,fonttitle=\bfseries,coltitle=col6!50!black,colframe=col6!50!white,title=Learning Outcome\newline,attach title to upper,borderline west={2pt}{0pt}{col6!80!black},left=3mm}
+
+\newtcolorbox{law}[1][]{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col3!20!white,fonttitle=\bfseries,coltitle=col1!50!black,colframe=col1!50!white,title=#1~Law\newline,attach title to upper,borderline west={2pt}{0pt}{col1!80!black},borderline north={2pt}{0pt}{col1!80!black},left=3mm,top=3mm}
+
+\renewtcolorbox{theorem}[1][]{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col3!20!white,fonttitle=\bfseries,coltitle=col2!50!black,colframe=col2!50!white,title=#1~Theorem\newline,attach title to upper,borderline west={2pt}{0pt}{col2!80!black},borderline north={2pt}{0pt}{col2!80!black},left=3mm,top=3mm}
+
+\newtcolorbox{result}{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,colback=col3!20!white,fonttitle=\bfseries,coltitle=col4!50!black,colframe=col4!50!white,title=Result\newline,attach title to upper,borderline west={2pt}{0pt}{col4!80!black},borderline north={2pt}{0pt}{col4!80!black},left=3mm,top=3mm}
+
+\renewtcolorbox{proof}[1][height=4cm]{standard jigsaw,enhanced,sharp corners,frame hidden,boxrule=0pt,breakable,#1,colback=col3!80!white,fonttitle=\bfseries,coltitle=col4!50!black,colframe=col3!50!white,opacityback=.1,title=Proof\newline,attach title to upper,borderline west={2pt}{0pt}{col4!80!black},left=3mm,top=3mm,borderline north={1pt}{0pt}{col4!80!black},before={\vspace{-7pt}}}
+
+\usepackage{environ}
