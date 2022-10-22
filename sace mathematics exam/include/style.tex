@@ -1,0 +1,84 @@
+\usepackage{amsmath}
+    \DeclareMathOperator\cis{cis}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+    \pgfplotsset{compat=newest}
+\usepackage{parskip}
+
+\usepackage{caption}
+\DeclareCaptionFormat{empty}{#1}
+\renewcommand*\figurename{\sffamily\bfseries Figure}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\usepackage{lastpage}
+\footer{}{\sffamily page~\textbf{\thepage}~of~\textbf{\pageref{LastPage}}}{}
+
+\usepackage{xcolor}
+\colorgrids
+\definecolor{GridColor}{gray}{0.7}
+
+\makeatletter
+\def\fillwithgrid#1{
+    \vspace{1ex}
+    \fullwidth{
+  \begingroup
+  \ifhmode
+    \par
+  \fi
+  \hrule height \z@
+  \nobreak
+  \setlength{\@tempdima}{\gridsize}
+  \addtolength{\@tempdima}{\gridlinewidth}
+  \setlength{\@tempdimb}{\gridsize}
+  \addtolength{\@tempdimb}{-\gridlinewidth}
+  \setbox0=\hbox{%
+    \rlap{\vrule height \gridsize depth \gridlinewidth width \gridlinewidth}%
+    \rlap{\vrule height \gridsize depth -\@tempdimb width \@tempdima}%
+    \vrule height 0pt depth \gridlinewidth width \@tempdima
+    \llap{\vrule height \gridsize depth \gridlinewidth width \gridlinewidth}%
+  }%
+  \wd0=\gridsize
+  \dp0=0pt
+  \setbox1=\hbox to \textwidth{%
+    \color@begingroup
+    \if@colorgrids
+      \color{GridColor}%
+    \fi
+    \hskip \@totalleftmargin \leaders\copy0\hfil \kern\gridlinewidth
+    \color@endgroup
+  }
+  \cleaders \copy1 \vskip #1 \kern \gridlinewidth \hbox{}%
+  \endgroup
+  }
+    \droppoints
+}
+\makeatother
+
+
+\renewcommand{\d}{\mathrm{d}}
+
+\usepackage{geometry}
+    \geometry{
+        a4paper,
+        margin=2.5cm,
+        right=2cm,
+        bottom=3cm,
+        headheight=14.5pt,
+        marginparsep=0mm
+    }
+
+\marksnotpoints
+\qformat{\textbf{Question~\thequestion}\qquad\qquad(\totalpoints{}~\points)\hfill}
+\setlength{\rightpointsmargin}{3cm}
+\pointsdroppedatright
+\pointformat{(\thepoints)}
+
+\renewcommand{\partshook}{
+    \setlength{\leftmargin}{0pt}
+    \setlength{\topsep}{1em}
+}
+
+\usepackage{enumitem}

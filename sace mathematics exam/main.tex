@@ -1,0 +1,44 @@
+\documentclass[12pt,addpoints]{exam}
+\input{include/style.tex}
+
+\begin{document}
+\sffamily
+\input{include/coverpage.tex}
+\begin{questions}
+\question
+\begin{parts}
+    \part[1]
+    Write $-1+i\sqrt{3}$ in $r\cis\theta$ form.
+    \fillwithgrid{2cm}
+    \part
+    Consider the complex number $z_1=x+iy$, where $x>0$, $y>0$, and $x>y$.\par
+    The complex number $z_1$, which lies in the first quadrand of the Argand diagram, is shown in Figure 1.
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}
+                \draw[stealth-stealth] (-3,0) -- (3,0) node[right] {$\text{Re}(z)$};
+                \draw[stealth-stealth] (0,-2) -- (0,3) node[above] {$\text{Im}(z)$};
+                \draw[-stealth] (0,0) -- (2,1) node[right]{$z_1$};
+                \draw[dashed] (2,0) -- (2,1) node[midway,right] {$y$};
+                \draw (0,0) -- (2,0) node[midway,below]{$x$};
+                \draw (0,0) node[below left]{$0$};
+            \end{scope}
+        \end{tikzpicture}
+        \caption[]{}
+    \end{figure}
+    \begin{subparts}
+        \subpart[1]
+        Let $z_1=(-1+i\sqrt{3})z_1$.\par
+        Using part (a), show that $|z_2|=2|z_1|.$
+        \fillwithgrid{4cm}
+        \subpart[2]
+        On the Argant diagram in Figure 1, draw $z_2$.\par
+        \droppoints
+    \end{subparts}
+    \part[2]
+    Use the triangle inequality to show that $|z_1-z_2|<3|z_1|$.
+    \fillwithgrid{4cm}
+\end{parts}
+\end{questions}
+\end{document}
