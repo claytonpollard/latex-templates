@@ -4,6 +4,11 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
     \pgfplotsset{compat=newest}
+    
+\tikzset{answer/.style={draw,text opacity=0,opacity=0}}
+\let\oldprintanswers\printanswers
+\def\printanswers{\oldprintanswers\tikzset{answer/.style={text opacity=1,opacity=1,color=red}}}
+
 \usepackage{parskip}
 
 \usepackage{caption}
@@ -14,7 +19,7 @@
 \setlength{\parskip}{1em}
 
 \usepackage{lastpage}
-\footer{}{\sffamily page~\textbf{\thepage}~of~\textbf{\pageref{LastPage}}}{}
+\footer{}{\iflastpage{\sffamily page~\textbf{\thepage}~of~\textbf{\pageref{LastPage}~--~\textbf{\textit{end of booklet}}}}{\sffamily page~\textbf{\thepage}~of~\textbf{\pageref{LastPage}}}}{\iflastpage{}{\oddeven{\sffamily PLEASE TURN OVER}{}}}
 
 \usepackage{xcolor}
 \colorgrids
@@ -53,8 +58,36 @@
   \cleaders \copy1 \vskip #1 \kern \gridlinewidth \hbox{}%
   \endgroup
   }
-    \droppoints
+      \vspace{-1ex}\droppoints
 }
+
+\renewenvironment{solutionorgrid}[1][0pt]%
+  {%
+    \@insolutiontrue % cancelled by the end of the environment
+    \@addpointsfalse % cancelled by the end of the environment
+    \ifprintanswers
+      \begingroup
+      \Solution@Emphasis
+      \begin{TheSolution}%
+    \else
+      \ifcancelspace
+        % Do nothing
+      \else
+        \par
+        \penalty 0
+        \fillwithgrid{#1}%
+      \fi
+      \setbox\z@\vbox\bgroup
+    \fi
+  }{%
+    \ifprintanswers
+      \end{TheSolution}%
+      \endgroup
+                \droppoints
+    \else
+      \egroup
+    \fi
+  }%
 \makeatother
 
 
@@ -71,14 +104,41 @@
     }
 
 \marksnotpoints
-\qformat{\textbf{Question~\thequestion}\qquad\qquad(\totalpoints{}~\points)\hfill}
+\qformat{\textbf{Question~\thequestion}\qquad\qquad(\totalpoints{}~\points)\hfill\vrule depth 3ex width 0pt}
 \setlength{\rightpointsmargin}{3cm}
 \pointsdroppedatright
 \pointformat{(\thepoints)}
 
-\renewcommand{\partshook}{
-    \setlength{\leftmargin}{0pt}
-    \setlength{\topsep}{1em}
+\renewcommand{\questionshook}{
+    \leftmargin=0pt
+    \labelwidth=-\labelsep
 }
 
 \usepackage{enumitem}
+
+\renewcommand{\subpartlabel}{(\thesubpart)}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}~}
+\SolutionEmphasis{\color{red}\sffamily\small}
+
+\usepackage{tkz-euclide}
+
+\newcommand{\blankpage}{
+    \pagebreak
+    \null
+    \vfill
+    \begin{center}
+        BLANK PAGE
+    \end{center}
+    \vfill
+    \pagebreak
+}
+
+\newcommand{\linedpage}{
+    \pagebreak
+    \begin{framed}
+        \lines{26}
+    \end{framed}
+}
+
+\usepackage{siunitx}

@@ -1,6 +1,25 @@
 \documentclass[12pt,addpoints]{exam}
 \input{include/style.tex}
 
+% Replace include/crest.png with your school crest
+\newcommand{\school}{% Type in the name of your school
+School of Rock
+}
+\newcommand{\course}{% Type in the course name
+Specialist Mathematics
+}
+\newcommand{\taskyear}{% Replace "\the\year{}" with the year, else it will put in the current year
+\the\year{}
+}
+\newcommand{\taskname}{% Type in the task name/number
+Task 1
+}
+\newcommand{\totaltime}{% Type in the total time in minutes
+120 minutes
+}
+
+%\printanswers
+
 \begin{document}
 \sffamily
 \input{include/coverpage.tex}
@@ -9,36 +28,94 @@
 \begin{parts}
     \part[1]
     Write $-1+i\sqrt{3}$ in $r\cis\theta$ form.
-    \fillwithgrid{2cm}
+    \begin{solutionorgrid}[2cm]
+        $2\cis\left(\dfrac{2\pi}{3}\right)$
+    \end{solutionorgrid}
+%    \fillwithgrid{2cm}
     \part
     Consider the complex number $z_1=x+iy$, where $x>0$, $y>0$, and $x>y$.\par
     The complex number $z_1$, which lies in the first quadrand of the Argand diagram, is shown in Figure 1.
     \begin{figure}[h]
         \centering
         \begin{tikzpicture}
-            \begin{scope}
-                \draw[stealth-stealth] (-3,0) -- (3,0) node[right] {$\text{Re}(z)$};
-                \draw[stealth-stealth] (0,-2) -- (0,3) node[above] {$\text{Im}(z)$};
-                \draw[-stealth] (0,0) -- (2,1) node[right]{$z_1$};
-                \draw[dashed] (2,0) -- (2,1) node[midway,right] {$y$};
-                \draw (0,0) -- (2,0) node[midway,below]{$x$};
-                \draw (0,0) node[below left]{$0$};
-            \end{scope}
+            \draw[stealth-stealth] (-4,0) -- (4,0) node[right] {$\text{Re}(z)$};
+            \draw[stealth-stealth] (0,-1) -- (0,4) node[above] {$\text{Im}(z)$};
+			\tkzDefPoint(0,0){O}
+			\tkzDefPoint(1.8,1){z1}
+			\tkzDefPoint(1.8,0){z1x}
+			\tkzDefPoint(0,1){y}
+			\tkzDefPoint(-3.6,2){z2}
+			\tkzDefPoint(-3.6,0){z2x}
+			\tkzDefPoint(0,2){z2y}
+			\tkzDrawSegment[-stealth](O,z1)
+			\tkzLabelPoint[right](z1){$z_1$}
+			\tkzDrawSegment[dashed](z1x,z1)
+			\tkzLabelSegment[right](z1x,z1){$y$}
+			\tkzLabelSegment[below](O,z1x){$x$}
+			\tkzLabelPoint[below left](O){$0$}
+			\draw[answer,opacity=0] (O) -- (z2);
+			\tkzDrawSegment[-stealth,answer](O,z2)
+			\tkzLabelPoint[left,answer](z2){$z_2$}
+			\tkzLabelAngle[answer,pos=1.25](y,O,z2){$\frac{2\pi}{3}$}
+			\tkzMarkAngle[mark=none,-stealth,answer,size=.75](z1,O,z2)
+			\tkzDrawSegment[dashed,answer](z2x,z2)
+			\tkzLabelSegment[left,answer](z2x,z2){$2y$}
+			\tkzDrawSegment[dashed,answer](z2y,z2)
+			\tkzLabelSegment[above,answer](z2y,z2){$2x$}
         \end{tikzpicture}
         \caption[]{}
     \end{figure}
     \begin{subparts}
         \subpart[1]
-        Let $z_1=(-1+i\sqrt{3})z_1$.\par
+        Let $z_2=(-1+i\sqrt{3})z_1$.\par
         Using part (a), show that $|z_2|=2|z_1|.$
-        \fillwithgrid{4cm}
+        \begin{solutionorgrid}[4cm]
+            \[\begin{aligned}
+                |z_2|&=|-2+i\sqrt{3}||z_1|\\
+                &=|2\cis\left(\frac{2\pi}{3}\right)||z_1|\\
+                &=2|z_1|
+            \end{aligned}\]
+        \end{solutionorgrid}
         \subpart[2]
         On the Argand diagram in Figure 1, draw $z_2$.\par
         \droppoints
-    \end{subparts}
+    \end{subparts}\newpage
     \part[2]
     Use the triangle inequality to show that $|z_1-z_2|<3|z_1|$.
     \fillwithgrid{4cm}
+\end{parts}
+\newpage
+\question
+Figure 2 shows a diagram of an elliptical-shaped oil spill that is expanding in area on the ocean surface.\par
+The area of an ellipse is $A=\pi ab$, where $a$ and $b$ are measurements on the axes of symmetry, as shown in Figure 2.
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            \draw (0,0) ellipse (30 mm and 15 mm);
+            \draw[stealth-stealth] (0,0) -- (3,0) node[midway,below]{$a$};
+            \draw[stealth-stealth] (0,0) -- (0,1.5) node[midway,left]{$b$};
+        \end{tikzpicture}
+        \caption[]{}
+    \end{figure}
+    
+The rate of change of the area of the lliptical oil spill is given by $\dfrac{\d A}{\d t}$. It may be assumed that the elliptical shape is maintained as the oil spill expands.
+\begin{parts}
+    \part[2]
+    Show that $a\dfrac{\d b}{\d t}=\dfrac{1}{\pi}\dfrac{\d A}{\d t}-b\dfrac{\d a}{\d t}$.
+    \fillwithgrid{3cm}
+    \part
+    Consider the instant when the area $A$ is $12$ \unit{m^2}.
+    \begin{subparts}
+        \subpart[1]
+        Show that $a=\dfrac{12}{\pi b}$
+        \fillwithgrid{1.5cm}
+        \newpage
+        \subpart[3]
+        The area of the oil spill is expanding at a rate of $2$ \unit{m^2.s^{-1}} at the instant when $$A=12~\unit{m^2},\ b=2~\unit{m},\ \text{and}\ \frac{\d a}{\d t}=0.5~\unit{m.s^{-1}}.$$
+        Find the \textbf{\textit{exact}} value of $\dfrac{\d b}{\d t}$ at this instant.
+        \fillwithgrid{5.5cm}
+    \end{subparts}
 \end{parts}
 \end{questions}
 \end{document}
